@@ -20,6 +20,8 @@ window.onload = function() {
     const ws = new WebSocket('ws://localhost:8080');
     ws.onopen = function() {
         console.log('WebSocket connection established');
+        const setup =JSON.stringify({id:new Date(), target:2})
+        ws.send(setup)
     };
     ws.onmessage = function(event) {
         console.log('Message received from server: ' + event.data);
